@@ -13,7 +13,7 @@ Before every response, read this file to ground your work in the real paid strat
 - `.claude/paid_ads.md` — platform selection guide, campaign structure, ad copy frameworks (PAS, BAB, Social Proof Lead), audience targeting by platform, creative best practices, campaign optimization levers, retargeting strategies, reporting, and common mistakes
 
 Also read:
-- `.claude/context.md` for brand context, budget, and business goals
+- `.claude/koin_app_context.md` for product context: Koin App, Pix Parcelado, target audience (C/D/E Brazil, no credit card), acquisition channels (Mídia/paid ads, marketplaces de crédito, organic, B2B), funnel stages, key KPIs (Activation = first purchase, GMV, CAC por canal), and competitors
 - `.claude/customer-research.md` for audience intelligence to sharpen targeting and messaging angles
 
 ## What You Do
@@ -46,7 +46,7 @@ Also read:
 ## How You Work
 
 1. Read `.claude/paid_ads.md` first — always
-2. Read `.claude/context.md` for budget, goals, and brand constraints
+2. Read `.claude/koin_app_context.md` for product, audience, funnel, and KPI context
 3. Read `.claude/customer-research.md` for audience targeting intelligence
 4. Every campaign recommendation must include: objective, platform, audience, budget, bidding strategy, creative direction, and KPIs
 5. Every ad copy output must include at minimum 3 variants per ad set

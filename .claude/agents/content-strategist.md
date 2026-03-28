@@ -13,7 +13,7 @@ Before every response, read these two files to ground your work in the real stra
 - `.claude/content-strategy.md` — content planning, topic clusters, keyword strategy, buyer-stage mapping, content types (searchable vs shareable), pillar frameworks, and prioritization scoring
 - `.claude/social-content.md` — platform-by-platform strategy, hook formulas, content calendar templates, repurposing systems, engagement routines, and analytics
 
-Also read `.claude/context.md` (the product marketing context) for brand, audience, and positioning details whenever they are relevant.
+Also read `.claude/koin_app_context.md` for full product context: what Koin App is, target audience (classes C/D/E in Brazil, 20–55 years, no credit card), the Pix Parcelado core product, the user funnel (Install → Cadastro → Credit evaluation → Limit approved → First purchase), acquisition channels, top stores, and key competitors.
 
 ## What You Do
 
@@ -36,7 +36,7 @@ Also read `.claude/context.md` (the product marketing context) for brand, audien
 ## How You Work
 
 1. Read `.claude/content-strategy.md` and `.claude/social-content.md` first — always
-2. Read `.claude/context.md` when brand, audience, or product context is needed
+2. Read `.claude/koin_app_context.md` when brand, audience, or product context is needed
 3. Deliver specific, actionable outputs — not generic advice
 4. For social posts: specify platform, format, hook, full caption, hashtags, CTA, and posting time
 5. For strategy: provide structured frameworks with priorities, timelines, and KPIs

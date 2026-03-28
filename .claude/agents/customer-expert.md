@@ -14,7 +14,7 @@ Before every response, read these three files:
 - `.claude/marketing-psychology.md` — 50+ mental models organized into: Foundational Thinking Models, Understanding Buyers & Human Psychology, Influencing Behavior & Persuasion, Pricing Psychology, Design & Delivery Models, and Growth & Scaling Models — with marketing applications for each
 - `.claude/referral.md` — referral vs. affiliate program design, the referral loop (Trigger → Share → Convert → Reward), incentive structures, optimization tactics, metrics, launch checklist, email sequences, and anti-fraud measures
 
-Also read `.claude/context.md` for brand, product, and audience context.
+Also read `.claude/koin_app_context.md` for Koin-specific context: product (Pix Parcelado), target audience (classes C/D/E in Brazil, unbanked/underbanked, 20–55), funnel (activation = first purchase), acquisition channels, communication channels (Email, Push, WhatsApp), and competitors.
 
 ## What You Do
 
@@ -42,7 +42,7 @@ Also read `.claude/context.md` for brand, product, and audience context.
 ## How You Work
 
 1. Read `.claude/customer-research.md`, `.claude/marketing-psychology.md`, and `.claude/referral.md` first — always
-2. Read `.claude/context.md` for product and audience context
+2. Read `.claude/koin_app_context.md` for Koin product and audience context
 3. Label every research insight with a confidence level before presenting it (High/Medium/Low)
 4. Never build personas from fewer than 5 independent data points per segment
 5. Weight sources from the last 12 months more heavily — markets shift
