@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Koin App — Resumo Estratégico 2026</title>
+<style>
+  :root {
+    --green: #00C48C;
+    --green-dark: #009E72;
+    --green-light: #E6FBF5;
+    --yellow: #FFD600;
+    --dark: #1A1A2E;
+    --mid: #2D2D44;
+    --text: #333;
+    --muted: #666;
+    --border: #E0E0E0;
+    --red: #FF4D4D;
+    --orange: #FF8C42;
+    --blue: #4A90E2;
+    --purple: #9B59B6;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #F5F7FA; color: var(--text); }
+
+  /* HEADER */
+  .header { background: var(--dark); color: white; padding: 40px 48px; }
+  .header-top { display: flex; justify-content: space-between; align-items: flex-start; }
+  .logo { font-size: 13px; font-weight: 700; letter-spacing: 3px; color: var(--green); text-transform: uppercase; margin-bottom: 12px; }
+  .header h1 { font-size: 32px; font-weight: 800; line-height: 1.2; }
+  .header h1 span { color: var(--green); }
+  .header-meta { text-align: right; font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.8; }
+  .header-meta strong { color: white; }
+  .header-sub { margin-top: 8px; font-size: 15px; color: rgba(255,255,255,0.6); }
+
+  /* SECTION WRAPPER */
+  .content { max-width: 1200px; margin: 0 auto; padding: 32px 24px; }
+  .section { margin-bottom: 40px; }
+  .section-title { font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--green-dark); margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+  .section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+  /* CARDS GRID */
+  .cards { display: grid; gap: 16px; }
+  .cards-2 { grid-template-columns: repeat(2, 1fr); }
+  .cards-3 { grid-template-columns: repeat(3, 1fr); }
+  .cards-4 { grid-template-columns: repeat(4, 1fr); }
+  .card { background: white; border-radius: 12px; padding: 24px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+  .card-icon { font-size: 28px; margin-bottom: 12px; }
+  .card h3 { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+  .card p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+  .card .tag { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 3px 8px; border-radius: 4px; margin-bottom: 10px; }
+
+  /* DELIVERABLES OVERVIEW */
+  .deliverable { display: flex; align-items: flex-start; gap: 16px; background: white; border-radius: 12px; padding: 20px 24px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); border-left: 4px solid var(--green); }
+  .deliverable-num { background: var(--green); color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 800; flex-shrink: 0; }
+  .deliverable-body h3 { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+  .deliverable-body p { font-size: 13px; color: var(--muted); line-height: 1.5; }
+  .deliverable-file { font-size: 11px; color: var(--green-dark); font-family: monospace; margin-top: 6px; background: var(--green-light); padding: 2px 6px; border-radius: 3px; display: inline-block; }
+  .deliverables-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+  /* BUDGET TABLE */
+  .budget-table { width: 100%; border-collapse: collapse; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+  .budget-table th { background: var(--dark); color: white; padding: 12px 16px; text-align: left; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; }
+  .budget-table td { padding: 14px 16px; font-size: 13px; border-bottom: 1px solid var(--border); }
+  .budget-table tr:last-child td { border-bottom: none; }
+  .budget-table tr.total td { background: var(--green-light); font-weight: 700; color: var(--green-dark); }
+  .budget-table tr:hover td { background: #FAFAFA; }
+  .priority-badge { display: inline-block; padding: 3px 8px; border-radius: 4px; font-size: 10px; font-weight: 700; letter-spacing: 0.5px; }
+  .priority-high { background: #FFF0F0; color: var(--red); }
+  .priority-med { background: #FFF8E6; color: var(--orange); }
+  .priority-low { background: var(--green-light); color: var(--green-dark); }
+  .budget-bar { height: 6px; border-radius: 3px; background: var(--border); margin-top: 6px; }
+  .budget-fill { height: 100%; border-radius: 3px; background: var(--green); }
+
+  /* SEGMENTS */
+  .segment-card { background: white; border-radius: 12px; padding: 20px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+  .segment-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+  .segment-letter { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 800; flex-shrink: 0; }
+  .seg-a { background: #FFF0F0; color: var(--red); }
+  .seg-b { background: #FFF8E6; color: var(--orange); }
+  .seg-c { background: var(--green-light); color: var(--green-dark); }
+  .seg-d { background: #F0F4FF; color: var(--blue); }
+  .segment-header h3 { font-size: 14px; font-weight: 700; }
+  .segment-header p { font-size: 12px; color: var(--muted); margin-top: 2px; }
+  .segment-goal { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 4px 10px; border-radius: 20px; display: inline-block; margin-bottom: 12px; }
+  .goal-convert { background: #FFF0F0; color: var(--red); }
+  .goal-recur { background: #FFF8E6; color: var(--orange); }
+  .goal-retain { background: var(--green-light); color: var(--green-dark); }
+  .goal-engage { background: #F0F4FF; color: var(--blue); }
+  .segment-mechanics { font-size: 12px; color: var(--muted); }
+  .segment-mechanics li { padding: 3px 0; list-style: none; padding-left: 16px; position: relative; }
+  .segment-mechanics li::before { content: '→'; position: absolute; left: 0; color: var(--green); }
+
+  /* CALENDAR */
+  .calendar-row { display: grid; grid-template-columns: 120px 1fr; gap: 0; }
+  .cal-week { background: var(--dark); color: white; padding: 16px; display: flex; flex-direction: column; justify-content: center; }
+  .cal-week .week-num { font-size: 20px; font-weight: 800; color: var(--green); }
+  .cal-week .week-dates { font-size: 11px; color: rgba(255,255,255,0.5); margin-top: 2px; }
+  .cal-week .week-phase { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-top: 6px; }
+  .cal-content { background: white; padding: 16px 20px; border-bottom: 1px solid var(--border); }
+  .cal-content .cal-action { font-size: 13px; font-weight: 600; margin-bottom: 8px; }
+  .cal-mechanics { display: flex; flex-wrap: wrap; gap: 6px; }
+  .mech-tag { font-size: 10px; padding: 3px 8px; border-radius: 12px; font-weight: 600; }
+  .mech-apita { background: #FFF0F0; color: var(--red); }
+  .mech-brasil { background: #FFF8E6; color: var(--orange); }
+  .mech-craques { background: var(--green-light); color: var(--green-dark); }
+  .mech-gol { background: #F5F0FF; color: var(--purple); }
+  .mech-bolao { background: #F0F4FF; color: var(--blue); }
+  .calendar-wrapper { border-radius: 12px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+  .calendar-wrapper .calendar-row:last-child .cal-content { border-bottom: none; }
+
+  /* PERSONAS */
+  .persona-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+  .persona-header { padding: 20px 24px; color: white; }
+  .persona-header.camila { background: linear-gradient(135deg, #FF6B6B, #FF8E53); }
+  .persona-header.marcos { background: linear-gradient(135deg, #4A90E2, #7B5EA7); }
+  .persona-name { font-size: 22px; font-weight: 800; }
+  .persona-subtitle { font-size: 13px; opacity: 0.85; margin-top: 4px; }
+  .persona-body { padding: 20px 24px; }
+  .persona-stat { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
+  .persona-stat:last-child { border-bottom: none; }
+  .persona-stat .label { color: var(--muted); }
+  .persona-stat .value { font-weight: 600; }
+  .persona-pain { margin-top: 14px; }
+  .persona-pain h4 { font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+  .pain-item { font-size: 12px; padding: 4px 0 4px 16px; position: relative; color: var(--text); }
+  .pain-item::before { content: '✗'; position: absolute; left: 0; color: var(--red); font-size: 10px; }
+
+  /* PILLARS */
+  .pillar { background: white; border-radius: 10px; padding: 18px 20px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); border-top: 3px solid var(--green); }
+  .pillar-num { font-size: 11px; font-weight: 700; color: var(--green); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 6px; }
+  .pillar h3 { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+  .pillar p { font-size: 12px; color: var(--muted); margin-bottom: 10px; }
+  .pillar-stage { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: white; padding: 3px 8px; border-radius: 4px; background: var(--green); display: inline-block; }
+
+  /* RISKS */
+  .risk-card { background: white; border-radius: 12px; padding: 20px 24px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); border-left: 4px solid var(--red); }
+  .risk-card.medium { border-left-color: var(--orange); }
+  .risk-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
+  .risk-header h3 { font-size: 14px; font-weight: 700; }
+  .risk-prob { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 3px 8px; border-radius: 4px; }
+  .prob-high { background: #FFF0F0; color: var(--red); }
+  .prob-med { background: #FFF8E6; color: var(--orange); }
+  .risk-mit { font-size: 12px; color: var(--muted); margin-top: 8px; padding-left: 14px; border-left: 2px solid var(--border); }
+
+  /* PAID MEDIA */
+  .paid-card { background: var(--dark); color: white; border-radius: 12px; padding: 24px; }
+  .paid-card h3 { font-size: 16px; font-weight: 800; margin-bottom: 6px; color: var(--green); }
+  .paid-card .paid-sub { font-size: 13px; color: rgba(255,255,255,0.6); margin-bottom: 20px; }
+  .paid-reason { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; }
+  .paid-reason .bullet { color: var(--green); font-size: 18px; line-height: 1; flex-shrink: 0; margin-top: 2px; }
+  .paid-reason p { font-size: 13px; color: rgba(255,255,255,0.75); line-height: 1.5; }
+
+  /* STRATEGY SUMMARY */
+  .strategy-box { background: var(--dark); color: white; border-radius: 12px; padding: 32px; text-align: center; }
+  .strategy-box h2 { font-size: 20px; font-weight: 800; margin-bottom: 16px; line-height: 1.4; }
+  .strategy-box h2 span { color: var(--green); }
+  .strategy-box p { font-size: 14px; color: rgba(255,255,255,0.65); line-height: 1.7; max-width: 700px; margin: 0 auto; }
+  .strategy-pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 24px; }
+  .strategy-pillar { background: rgba(255,255,255,0.05); border-radius: 8px; padding: 16px; text-align: left; }
+  .strategy-pillar .sp-label { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--green); margin-bottom: 8px; }
+  .strategy-pillar p { font-size: 12px; color: rgba(255,255,255,0.6); line-height: 1.5; }
+
+  /* CHANNEL */
+  .channel { background: white; border-radius: 10px; padding: 18px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+  .channel-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+  .ch-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .channel h3 { font-size: 14px; font-weight: 700; }
+  .channel p { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+  /* FOOTER */
+  .footer { background: var(--dark); color: rgba(255,255,255,0.4); font-size: 12px; text-align: center; padding: 20px; margin-top: 40px; }
+  .footer strong { color: rgba(255,255,255,0.6); }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .cards-2, .cards-3, .cards-4 { grid-template-columns: 1fr; }
+    .deliverables-grid { grid-template-columns: 1fr; }
+    .strategy-pillars { grid-template-columns: 1fr; }
+    .header { padding: 24px; }
+    .header-top { flex-direction: column; gap: 16px; }
+    .header-meta { text-align: left; }
+    .content { padding: 20px 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="logo">Koin App</div>
+      <h1>Resumo Estratégico<br><span>Copa do Mundo 2026</span></h1>
+      <p class="header-sub">Outputs consolidados de 4 agentes de marketing especialistas</p>
+    </div>
+    <div class="header-meta">
+      <div><strong>Campanha</strong> 8 Jun – 20 Jul 2026</div>
+      <div><strong>Orçamento promo</strong> R$113.000</div>
+      <div><strong>Conceito</strong> Destrava o Jogo</div>
+      <div><strong>Data</strong> 26 de maio de 2026</div>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+
+  <!-- DELIVERABLES -->
+  <div class="section">
+    <div class="section-title">Documentos Produzidos</div>
+    <div class="deliverables-grid">
+      <div class="deliverable">
+        <div class="deliverable-num">1</div>
+        <div class="deliverable-body">
+          <h3>Estratégia Geral 90 dias</h3>
+          <p>5 ideias de marketing priorizadas, roadmap por canal, métricas por iniciativa</p>
+          <div class="deliverable-file">strategy-output.md</div>
+        </div>
+      </div>
+      <div class="deliverable">
+        <div class="deliverable-num">2</div>
+        <div class="deliverable-body">
+          <h3>Plano de Mídia Paga</h3>
+          <p>Estrutura Meta/Google, 6 copies em português, targeting, briefs de vídeo</p>
+          <div class="deliverable-file">paid-ads-output.md</div>
+        </div>
+      </div>
+      <div class="deliverable">
+        <div class="deliverable-num">3</div>
+        <div class="deliverable-body">
+          <h3>Estratégia Copa 2026</h3>
+          <p>Segmentação, alocação R$113K, calendário semanal, refinamento de mecânicas</p>
+          <div class="deliverable-file">copa-strategy-output.md</div>
+        </div>
+      </div>
+      <div class="deliverable">
+        <div class="deliverable-num">4</div>
+        <div class="deliverable-body">
+          <h3>Plano de Comunicação Copa</h3>
+          <p>CRM por segmento, calendário social, playbook reativo, integração promos</p>
+          <div class="deliverable-file">copa-communication-output.md</div>
+        </div>
+      </div>
+      <div class="deliverable">
+        <div class="deliverable-num">5</div>
+        <div class="deliverable-body">
+          <h3>Estratégia de Conteúdo</h3>
+          <p>5 pilares, 10 posts em português, calendário semanal, repurposing 1→7</p>
+          <div class="deliverable-file">content-strategy-output.md</div>
+        </div>
+      </div>
+      <div class="deliverable">
+        <div class="deliverable-num">6</div>
+        <div class="deliverable-body">
+          <h3>Inteligência de Cliente</h3>
+          <p>Personas Camila e Marcos, 5 princípios de psicologia, programa de indicação</p>
+          <div class="deliverable-file">customer-intelligence-output.md</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BUDGET -->
+  <div class="section">
+    <div class="section-title">Alocação de Orçamento — R$113.000</div>
+    <table class="budget-table">
+      <thead>
+        <tr>
+          <th>Mecânica</th>
+          <th>Segmento Principal</th>
+          <th>Orçamento</th>
+          <th>%</th>
+          <th>Distribuição</th>
+          <th>Prioridade</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>⚡ Apita o Pix</strong><br><span style="font-size:11px;color:var(--muted)">Flash 90-120 min, todos os jogos</span></td>
+          <td>A (ativação) + B (recorrência)</td>
+          <td><strong>R$42.000</strong></td>
+          <td>37%</td>
+          <td><div class="budget-bar"><div class="budget-fill" style="width:37%;background:var(--red)"></div></div></td>
+          <td><span class="priority-badge priority-high">Primária</span></td>
+        </tr>
+        <tr>
+          <td><strong>🇧🇷 Se o Brasil Ganhar</strong><br><span style="font-size:11px;color:var(--muted)">26% OFF dia seguinte à vitória</span></td>
+          <td>A (ativação) + B (recorrência)</td>
+          <td><strong>R$28.000</strong></td>
+          <td>25%</td>
+          <td><div class="budget-bar"><div class="budget-fill" style="width:25%;background:var(--orange)"></div></div></td>
+          <td><span class="priority-badge priority-high">Condicional</span></td>
+        </tr>
+        <tr>
+          <td><strong>🏆 Craques da Semana</strong><br><span style="font-size:11px;color:var(--muted)">Ranking semanal + voucher iFood R$260</span></td>
+          <td>C (power users) + B</td>
+          <td><strong>R$18.000</strong></td>
+          <td>16%</td>
+          <td><div class="budget-bar"><div class="budget-fill" style="width:16%;background:var(--green)"></div></div></td>
+          <td><span class="priority-badge priority-med">Retenção</span></td>
+        </tr>
+        <tr>
+          <td><strong>⚽ A cada Gol do Brasil</strong><br><span style="font-size:11px;color:var(--muted)">Absorver no Apita o Pix (26 min)</span></td>
+          <td>B (recorrência)</td>
+          <td><strong>R$12.000</strong></td>
+          <td>11%</td>
+          <td><div class="budget-bar"><div class="budget-fill" style="width:11%;background:var(--purple)"></div></div></td>
+          <td><span class="priority-badge priority-med">Orgânico</span></td>
+        </tr>
+        <tr>
+          <td><strong>🎯 Bolão Koin</strong><br><span style="font-size:11px;color:var(--muted)">Engajamento Seg. D — revisão legal</span></td>
+          <td>D (sem limite)</td>
+          <td><strong>R$6.000</strong></td>
+          <td>5%</td>
+          <td><div class="budget-bar"><div class="budget-fill" style="width:5%;background:var(--blue)"></div></div></td>
+          <td><span class="priority-badge priority-low">Engajamento</span></td>
+        </tr>
+        <tr>
+          <td><strong>🔧 Reserva contingência</strong><br><span style="font-size:11px;color:var(--muted)">Brasil avança / pivô semanas 3-4</span></td>
+          <td>Todos</td>
+          <td><strong>R$7.000</strong></td>
+          <td>6%</td>
+          <td><div class="budget-bar"><div class="budget-fill" style="width:6%;background:#999"></div></div></td>
+          <td><span class="priority-badge priority-low">Reserva</span></td>
+        </tr>
+        <tr class="total">
+          <td><strong>TOTAL</strong></td>
+          <td></td>
+          <td><strong>R$113.000</strong></td>
+          <td><strong>100%</strong></td>
+          <td><div class="budget-bar"><div class="budget-fill" style="width:100%"></div></div></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SEGMENTS -->
+  <div class="section">
+    <div class="section-title">Segmentação de Usuários</div>
+    <div class="cards cards-4">
+      <div class="segment-card">
+        <div class="segment-header">
+          <div class="segment-letter seg-a">A</div>
+          <div>
+            <h3>Com Limite</h3>
+            <p>0 compras</p>
+          </div>
+        </div>
+        <div><span class="segment-goal goal-convert">⚡ ATIVAÇÃO — CRÍTICO</span></div>
+        <ul class="segment-mechanics">
+          <li>Apita o Pix (primário)</li>
+          <li>Se o Brasil Ganhar</li>
+          <li>Push 3h antes do jogo</li>
+          <li>WhatsApp mid-Copa</li>
+        </ul>
+      </div>
+      <div class="segment-card">
+        <div class="segment-header">
+          <div class="segment-letter seg-b">B</div>
+          <div>
+            <h3>Ativados</h3>
+            <p>1–2 compras</p>
+          </div>
+        </div>
+        <div><span class="segment-goal goal-recur">🔁 RECORRÊNCIA — ALTO</span></div>
+        <ul class="segment-mechanics">
+          <li>Apita o Pix (secundário)</li>
+          <li>A cada Gol do Brasil</li>
+          <li>Craques da Semana</li>
+          <li>WhatsApp semanal</li>
+        </ul>
+      </div>
+      <div class="segment-card">
+        <div class="segment-header">
+          <div class="segment-letter seg-c">C</div>
+          <div>
+            <h3>Power Users</h3>
+            <p>5+ compras</p>
+          </div>
+        </div>
+        <div><span class="segment-goal goal-retain">🏆 RETENÇÃO + INDICAÇÃO</span></div>
+        <ul class="segment-mechanics">
+          <li>Craques da Semana (primário)</li>
+          <li>Link de indicação</li>
+          <li>Reconhecimento semanal</li>
+          <li>Push de ranking</li>
+        </ul>
+      </div>
+      <div class="segment-card">
+        <div class="segment-header">
+          <div class="segment-letter seg-d">D</div>
+          <div>
+            <h3>Sem Limite</h3>
+            <p>Não pode comprar</p>
+          </div>
+        </div>
+        <div><span class="segment-goal goal-engage">👀 ENGAJAMENTO APENAS</span></div>
+        <ul class="segment-mechanics">
+          <li>Bolão Koin (se aprovado)</li>
+          <li>Push neutro 1×/semana</li>
+          <li>ZERO CTA de compra</li>
+          <li>Reavaliação de crédito</li>
+        </ul>
+      </div>
+    </div>
+    <div style="margin-top:12px;padding:12px 16px;background:#FFF8E6;border-radius:8px;font-size:13px;color:var(--orange);border-left:3px solid var(--orange);">
+      <strong>⚠️ Regra crítica:</strong> Segmento D nunca recebe mensagem de desconto ou compra. Usuário sem limite que vê promo gera frustração e churn. Engajamento apenas.
+    </div>
+  </div>
+
+  <!-- CALENDAR -->
+  <div class="section">
+    <div class="section-title">Calendário da Campanha — 6 Semanas</div>
+    <div class="calendar-wrapper">
+      <div class="calendar-row">
+        <div class="cal-week">
+          <div class="week-num">S0</div>
+          <div class="week-dates">8–10 Jun</div>
+          <div class="week-phase">Pré-Copa</div>
+        </div>
+        <div class="cal-content">
+          <div class="cal-action">📣 WhatsApp Blast Seg. A: "seu limite está esperando". Bolão Koin ao vivo.</div>
+          <div class="cal-mechanics">
+            <span class="mech-tag mech-bolao">Bolão Koin</span>
+          </div>
+        </div>
+      </div>
+      <div class="calendar-row">
+        <div class="cal-week">
+          <div class="week-num">S1</div>
+          <div class="week-dates">11–17 Jun</div>
+          <div class="week-phase">Grupos</div>
+        </div>
+        <div class="cal-content">
+          <div class="cal-action">🔬 Brasil Jogo 1 = primeiro Apita o Pix ao vivo (teste vs. controle antes do commit total).</div>
+          <div class="cal-mechanics">
+            <span class="mech-tag mech-apita">Apita o Pix</span>
+            <span class="mech-tag mech-bolao">Bolão</span>
+          </div>
+        </div>
+      </div>
+      <div class="calendar-row">
+        <div class="cal-week">
+          <div class="week-num">S2</div>
+          <div class="week-dates">18–24 Jun</div>
+          <div class="week-phase">Grupos</div>
+        </div>
+        <div class="cal-content">
+          <div class="cal-action">🟢 Brasil Jogo 2. "Se o Brasil Ganhar" dispara manhã seguinte se vitória. A cada Gol para Seg. B.</div>
+          <div class="cal-mechanics">
+            <span class="mech-tag mech-apita">Apita o Pix</span>
+            <span class="mech-tag mech-brasil">Se o Brasil Ganhar</span>
+            <span class="mech-tag mech-gol">A cada Gol</span>
+            <span class="mech-tag mech-bolao">Bolão</span>
+          </div>
+        </div>
+      </div>
+      <div class="calendar-row">
+        <div class="cal-week">
+          <div class="week-num">S3</div>
+          <div class="week-dates">25 Jun–1 Jul</div>
+          <div class="week-phase">Grupos / R16</div>
+        </div>
+        <div class="cal-content">
+          <div class="cal-action">🏆 Brasil Jogo 3. Craques Semana 1 anunciados via WhatsApp. Push referral Seg. C.</div>
+          <div class="cal-mechanics">
+            <span class="mech-tag mech-apita">Apita o Pix</span>
+            <span class="mech-tag mech-brasil">Se o Brasil Ganhar</span>
+            <span class="mech-tag mech-craques">Craques S1</span>
+            <span class="mech-tag mech-gol">A cada Gol</span>
+          </div>
+        </div>
+      </div>
+      <div class="calendar-row">
+        <div class="cal-week">
+          <div class="week-num">S4</div>
+          <div class="week-dates">2–8 Jul</div>
+          <div class="week-phase">Oitavas</div>
+        </div>
+        <div class="cal-content">
+          <div class="cal-action">⚡ Mata-mata. Concentração de orçamento Apita o Pix. Reserva liberada se Brasil vence R16.</div>
+          <div class="cal-mechanics">
+            <span class="mech-tag mech-apita">Apita o Pix 🔥</span>
+            <span class="mech-tag mech-brasil">Se o Brasil Ganhar</span>
+          </div>
+        </div>
+      </div>
+      <div class="calendar-row">
+        <div class="cal-week">
+          <div class="week-num">S5</div>
+          <div class="week-dates">9–15 Jul</div>
+          <div class="week-phase">QF / SF</div>
+        </div>
+        <div class="cal-content">
+          <div class="cal-action">🔥 Pico emocional. Reserva total deployada. Se Brasil eliminado: pivot "O jogo do Koin não para".</div>
+          <div class="cal-mechanics">
+            <span class="mech-tag mech-apita">Apita o Pix</span>
+            <span class="mech-tag mech-craques">Craques S2</span>
+            <span style="background:#F5F0FF;color:var(--purple);" class="mech-tag">Contingência</span>
+          </div>
+        </div>
+      </div>
+      <div class="calendar-row">
+        <div class="cal-week">
+          <div class="week-num">S6</div>
+          <div class="week-dates">16–20 Jul</div>
+          <div class="week-phase">Final</div>
+        </div>
+        <div class="cal-content">
+          <div class="cal-action">🏁 Final. Se Brasil na final: máximo "Se o Brasil Ganhar". Pós-Copa: transição Always On + Seg. D re-engajamento.</div>
+          <div class="cal-mechanics">
+            <span class="mech-tag mech-brasil">Se o Brasil Ganhar (condicional)</span>
+            <span style="background:#E8F5E9;color:#2E7D32;" class="mech-tag">Pós-Copa Push</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CRM + SOCIAL -->
+  <div class="section">
+    <div class="section-title">Plano de Comunicação — Copa</div>
+    <div class="cards cards-2">
+      <div class="card">
+        <div class="card-icon">📱</div>
+        <div class="tag" style="background:var(--green-light);color:var(--green-dark);">CRM — Regras Globais</div>
+        <h3>Frequência e Canais</h3>
+        <ul style="font-size:13px;color:var(--muted);line-height:1.9;list-style:none;margin-top:8px;">
+          <li>✓ Máx. <strong>3 contatos/semana</strong> por usuário (todos canais)</li>
+          <li>✓ Nunca push + WhatsApp <strong>no mesmo dia</strong></li>
+          <li>✓ Seg. A converte → <strong>sai do fluxo imediatamente</strong></li>
+          <li>✓ Suspender promos Copa <strong>12h após derrota</strong></li>
+          <li>✓ Push "Apita o Pix" → <strong>15 min antes</strong> da janela abrir</li>
+          <li>✓ Seg. D → <strong>zero CTA de compra</strong> em hipótese alguma</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-icon">📸</div>
+        <div class="tag" style="background:#F5F0FF;color:var(--purple);">Social — Calendário Tipo</div>
+        <h3>Rotina Semanal Instagram + TikTok</h3>
+        <table style="width:100%;font-size:12px;margin-top:10px;border-collapse:collapse;">
+          <tr style="background:#F5F5F5;"><th style="padding:6px;text-align:left;">Dia</th><th style="padding:6px;text-align:left;">Formato</th><th style="padding:6px;text-align:left;">Pilar</th></tr>
+          <tr><td style="padding:6px;border-bottom:1px solid var(--border);">Segunda</td><td style="padding:6px;border-bottom:1px solid var(--border);">Reels tutorial</td><td style="padding:6px;border-bottom:1px solid var(--border);">Awareness</td></tr>
+          <tr><td style="padding:6px;border-bottom:1px solid var(--border);">Terça</td><td style="padding:6px;border-bottom:1px solid var(--border);">Carrossel história</td><td style="padding:6px;border-bottom:1px solid var(--border);">Consideration</td></tr>
+          <tr><td style="padding:6px;border-bottom:1px solid var(--border);">Quarta</td><td style="padding:6px;border-bottom:1px solid var(--border);">TikTok educativo</td><td style="padding:6px;border-bottom:1px solid var(--border);">Awareness</td></tr>
+          <tr><td style="padding:6px;border-bottom:1px solid var(--border);"><strong>Quinta (jogo)</strong></td><td style="padding:6px;border-bottom:1px solid var(--border);">Reel pré-jogo</td><td style="padding:6px;border-bottom:1px solid var(--border);">Urgência</td></tr>
+          <tr><td style="padding:6px;border-bottom:1px solid var(--border);">Sexta</td><td style="padding:6px;border-bottom:1px solid var(--border);">Reels produto</td><td style="padding:6px;border-bottom:1px solid var(--border);">Conversão</td></tr>
+          <tr><td style="padding:6px;border-bottom:1px solid var(--border);">Sábado</td><td style="padding:6px;border-bottom:1px solid var(--border);">TikTok cultural</td><td style="padding:6px;border-bottom:1px solid var(--border);">Engajamento</td></tr>
+          <tr><td style="padding:6px;">Domingo</td><td style="padding:6px;">UGC / repost</td><td style="padding:6px;">Comunidade</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- REACTIVE PLAYBOOK -->
+  <div class="section">
+    <div class="section-title">Playbook Reativo — Resultados do Brasil</div>
+    <div class="cards cards-3">
+      <div class="card" style="border-top:3px solid var(--green);">
+        <div class="card-icon">🟢</div>
+        <div class="tag" style="background:var(--green-light);color:var(--green-dark);">Brasil Vence</div>
+        <h3>Janela: 2h após o apito</h3>
+        <ul style="font-size:12px;color:var(--muted);line-height:1.8;list-style:none;margin-top:8px;">
+          <li>📸 Reel pré-produzido (90 min)</li>
+          <li>📱 TikTok reação genérica</li>
+          <li>💬 Stories com link para app</li>
+          <li>🔔 Push promo 30 min após</li>
+          <li>📲 WhatsApp 1h após</li>
+        </ul>
+        <p style="font-size:11px;color:var(--muted);margin-top:10px;border-top:1px solid var(--border);padding-top:10px;">Templates pré-aprovados antes do 1º jogo. Sem placares, sem jogadores nominados.</p>
+      </div>
+      <div class="card" style="border-top:3px solid var(--orange);">
+        <div class="card-icon">🟡</div>
+        <div class="tag" style="background:#FFF8E6;color:var(--orange);">Brasil Perde / Empata</div>
+        <h3>Tom: humanidade, sem drama</h3>
+        <ul style="font-size:12px;color:var(--muted);line-height:1.8;list-style:none;margin-top:8px;">
+          <li>❌ Sem promo imediata</li>
+          <li>❌ Sem meme de derrota</li>
+          <li>⏸ Stories neutros 3-4h depois</li>
+          <li>📅 Feed retoma normal no dia seguinte</li>
+          <li>📵 Suspender CRM Copa 12h</li>
+        </ul>
+        <p style="font-size:11px;color:var(--muted);margin-top:10px;border-top:1px solid var(--border);padding-top:10px;">A ausência total também é estranha. Story humanizado, depois silêncio.</p>
+      </div>
+      <div class="card" style="border-top:3px solid var(--red);">
+        <div class="card-icon">🔴</div>
+        <div class="tag" style="background:#FFF0F0;color:var(--red);">Brasil Eliminado</div>
+        <h3>Pivot: "Koin não para"</h3>
+        <ul style="font-size:12px;color:var(--muted);line-height:1.8;list-style:none;margin-top:8px;">
+          <li>📝 Post "ciclo encerrado" + dignidade</li>
+          <li>🔄 Narrativa: Copa > resultado</li>
+          <li>🏆 Craques da Semana continua</li>
+          <li>⚡ Apita o Pix continua (todos os jogos)</li>
+          <li>📲 CRM: "Copa continua. Seus benefícios também."</li>
+        </ul>
+        <p style="font-size:11px;color:var(--muted);margin-top:10px;border-top:1px solid var(--border);padding-top:10px;">Escrever este conteúdo <strong>antes</strong> da Copa começar. Não esperar a eliminação.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAID MEDIA + RISKS -->
+  <div class="section">
+    <div class="section-title">Mídia Paga + Principais Riscos</div>
+    <div class="cards cards-2">
+      <div class="paid-card">
+        <h3>Click-to-WhatsApp · Meta Ads</h3>
+        <p class="paid-sub">A aposta de mídia paga da Copa — orçamento limitado, máximo impacto</p>
+        <div class="paid-reason">
+          <div class="bullet">●</div>
+          <p>Classes C/D/E tratam WhatsApp como infraestrutura digital primária. Ad → WhatsApp elimina camadas de fricção.</p>
+        </div>
+        <div class="paid-reason">
+          <div class="bullet">●</div>
+          <p>Seg. A é audiência first-party retargetável. Lookalike de ativados = CPM menor, qualidade maior que interesses.</p>
+        </div>
+        <div class="paid-reason">
+          <div class="bullet">●</div>
+          <p>Janela Copa (72h por jogo do Brasil) × targeting SP/RJ/BA/MG/DF/PR/RS = audiência Koin em pico de intenção.</p>
+        </div>
+        <div class="paid-reason">
+          <div class="bullet">●</div>
+          <p><strong>Evitar:</strong> vídeos de brand awareness. Seg. A já conhece a Koin — instalaram o app. Awareness não é o gargalo. Direct response sim.</p>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px;">
+        <div class="risk-card medium">
+          <div class="risk-header">
+            <h3>⚠️ Brasil sai antes das quartas</h3>
+            <span class="risk-prob prob-med">Moderado</span>
+          </div>
+          <p style="font-size:13px;color:var(--muted);">~R$40K em "Se o Brasil Ganhar" perde todas as janelas.</p>
+          <div class="risk-mit">Manter 40% do budget até o Brasil passar das oitavas. Apita o Pix é Copa-wide — realoca orçamento automaticamente.</div>
+        </div>
+        <div class="risk-card">
+          <div class="risk-header">
+            <h3>⚠️ Falha de notificação no dia do jogo</h3>
+            <span class="risk-prob prob-high">Moderado-Alto</span>
+          </div>
+          <p style="font-size:13px;color:var(--muted);">Pico de uso mobile = push open rates caem. Usuário primed que não recebe → churn elevado.</p>
+          <div class="risk-mit">Teste end-to-end em jogo não-Brasil antes do dia 11. Templates HSM aprovados no Meta 5 dias antes. Fallback manual.</div>
+        </div>
+        <div class="risk-card medium">
+          <div class="risk-header">
+            <h3>⚠️ Fraude Craques + Legal Bolão</h3>
+            <span class="risk-prob prob-med">Moderado</span>
+          </div>
+          <p style="font-size:13px;color:var(--muted);">Vouchers iFood atraem abuse de CPF. Bolão ≈ risco regulatório Lei 14.790/2023.</p>
+          <div class="risk-mit">Anti-fraude: mín R$80/compra, 48h entre qualificantes, máx 3 CPF/semana. Legal clearance Bolão antes de 1 jun.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PERSONAS -->
+  <div class="section">
+    <div class="section-title">Personas de Cliente</div>
+    <div class="cards cards-2">
+      <div class="persona-card">
+        <div class="persona-header camila">
+          <div class="persona-name">"A Camila"</div>
+          <div class="persona-subtitle">A Compradora Constrangida do Cotidiano</div>
+        </div>
+        <div class="persona-body">
+          <div class="persona-stat"><span class="label">Idade</span><span class="value">22–34 anos</span></div>
+          <div class="persona-stat"><span class="label">Classe</span><span class="value">C/D</span></div>
+          <div class="persona-stat"><span class="label">Renda</span><span class="value">R$1.400–R$2.500/mês</span></div>
+          <div class="persona-stat"><span class="label">Canais</span><span class="value">WhatsApp · Instagram · Shopee</span></div>
+          <div class="persona-stat"><span class="label">Gatilho</span><span class="value">Necessidade concreta e imediata</span></div>
+          <div class="persona-pain">
+            <h4>Principais Dores</h4>
+            <div class="pain-item">Negada pelo cartão de crédito repetidamente</div>
+            <div class="pain-item">Medo de dívida — viu na família</div>
+            <div class="pain-item">Não entende taxas e teme surpresas</div>
+          </div>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-header marcos">
+          <div class="persona-name">"O Marcos"</div>
+          <div class="persona-subtitle">O Reconstrutor de Crédito</div>
+        </div>
+        <div class="persona-body">
+          <div class="persona-stat"><span class="label">Idade</span><span class="value">36–52 anos</span></div>
+          <div class="persona-stat"><span class="label">Classe</span><span class="value">C/D</span></div>
+          <div class="persona-stat"><span class="label">Renda</span><span class="value">R$2.000–R$3.500/mês (irregular)</span></div>
+          <div class="persona-stat"><span class="label">Canais</span><span class="value">Serasa Crédito · Google · Email</span></div>
+          <div class="persona-stat"><span class="label">Gatilho</span><span class="value">Negado em outro lugar, busca segunda chance</span></div>
+          <div class="persona-pain">
+            <h4>Principais Dores</h4>
+            <div class="pain-item">Negado sem explicação — opacidade desmotiva</div>
+            <div class="pain-item">Desconfiança de fintechs — foi queimado antes</div>
+            <div class="pain-item">R$200 de limite parece insuficiente</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTENT PILLARS -->
+  <div class="section">
+    <div class="section-title">5 Pilares de Conteúdo</div>
+    <div class="cards cards-3" style="grid-template-columns:repeat(3,1fr)">
+      <div class="pillar">
+        <div class="pillar-num">Pilar 1</div>
+        <h3>"Comprar sem cartão é possível"</h3>
+        <p>Desconstrói a crença de que parcelamento exige cartão. Principal pilar de awareness para quem não conhece a Koin.</p>
+        <span class="pillar-stage">Awareness</span>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">Pilar 2</div>
+        <h3>"Seu dinheiro, seu controle"</h3>
+        <p>Educação financeira prática. Constrói confiança e reduz medo de usar crédito digital. Alto volume de busca orgânica.</p>
+        <span class="pillar-stage">Awareness → Consideration</span>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">Pilar 3</div>
+        <h3>"Histórias reais de quem usa"</h3>
+        <p>UGC e depoimentos de pessoas parecidas com o ICP. Prova social > argumento técnico para classe C/D/E.</p>
+        <span class="pillar-stage">Consideration → Decision</span>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">Pilar 4</div>
+        <h3>"Como aproveitar ao máximo"</h3>
+        <p>Tutoriais de uso, Pix externo, aumento de limite. Reduz churn pós-ativação e acelera recorrência.</p>
+        <span class="pillar-stage">Implementation</span>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">Pilar 5</div>
+        <h3>"Koin nos bastidores"</h3>
+        <p>Segurança, Grupo Prosus, como funciona a avaliação. Para público que foi rejeitado pelo sistema, confiança é pré-requisito.</p>
+        <span class="pillar-stage">Consideration → Decision</span>
+      </div>
+      <div class="card" style="border:2px dashed var(--border);box-shadow:none;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:8px;">
+        <div style="font-size:28px;">🔄</div>
+        <p style="font-size:13px;color:var(--muted);">1 vídeo → <strong>7 touchpoints</strong><br>TikTok → Reels → Carrossel → Stories → Push → WhatsApp → Email</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- STRATEGY SUMMARY -->
+  <div class="section">
+    <div class="strategy-box">
+      <h2>A Disciplina Que Determina o <span>Sucesso da Copa</span></h2>
+      <p>Se o Brasil vencer, a campanha vai parecer genial. Se o Brasil sair nas quartas, a Koin ainda deve bater as metas de ativação — porque a estratégia nunca foi sobre o Brasil ganhar.</p>
+      <div class="strategy-pillars">
+        <div class="strategy-pillar">
+          <div class="sp-label">Motor Principal</div>
+          <p><strong style="color:white;">Apita o Pix</strong> — Copa-wide, sempre ativo, funciona com qualquer resultado</p>
+        </div>
+        <div class="strategy-pillar">
+          <div class="sp-label">Acelerador Emocional</div>
+          <p><strong style="color:white;">Se o Brasil Ganhar</strong> — orçamento contingente, 40% retido até R16</p>
+        </div>
+        <div class="strategy-pillar">
+          <div class="sp-label">Flywheel de Retenção</div>
+          <p><strong style="color:white;">Craques da Semana</strong> — protegido contra fraude, anunciado às segundas</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHANNEL PRIORITY -->
+  <div class="section">
+    <div class="section-title">Prioridade de Canais — Estratégia 90 dias</div>
+    <div class="cards cards-3">
+      <div class="channel">
+        <div class="channel-header">
+          <div class="ch-dot" style="background:var(--green)"></div>
+          <h3>1. Orgânico (ASO + Indicação)</h3>
+        </div>
+        <p>Canal composto. Usuários B2B/referidos ativam a taxas 1,5–2× maior. Investimento em ASO reduz CAC permanentemente.</p>
+      </div>
+      <div class="channel">
+        <div class="channel-header">
+          <div class="ch-dot" style="background:var(--blue)"></div>
+          <h3>2. CRM (Email + Push + WhatsApp)</h3>
+        </div>
+        <p>Maior ROI sobre a KPI primária. +10 pp na taxa de ativação = +33% de eficiência em todos os canais de aquisição simultaneamente.</p>
+      </div>
+      <div class="channel">
+        <div class="channel-header">
+          <div class="ch-dot" style="background:var(--orange)"></div>
+          <h3>3. Meta Ads (otimizado)</h3>
+        </div>
+        <p>Motor de volume com 2 correções necessárias: criativos UGC + objetivo de campanha por evento de ativação (não install).</p>
+      </div>
+    </div>
+    <div style="margin-top:12px;padding:12px 16px;background:var(--green-light);border-radius:8px;font-size:13px;color:var(--green-dark);border-left:3px solid var(--green);">
+      <strong>Frame estratégico:</strong> 65% dos usuários cadastrados não recebem limite e não podem comprar. Nenhuma campanha os converte. O foco é extrair valor máximo dos 35% que podem transacionar — através de lifecycle, indicação e otimização criativa — enquanto se constrói infraestrutura orgânica que reduz o CAC nos próximos 12 meses.
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  Gerado em 26 de maio de 2026 · Koin App / Grupo Prosus · <strong>6 documentos estratégicos</strong> produzidos por agentes especializados
+</div>
+
+</body>
+</html>
