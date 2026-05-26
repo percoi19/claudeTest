@@ -4,8 +4,8 @@
   "permissions": {
     "defaultMode": "default",
     "allow": [
-      "Bash(git:*)",
-      "Bash(npm:*)",
+      "Bash(git *)",
+      "Bash(npm *)",
       "Read",
       "Edit",
       "Write",
